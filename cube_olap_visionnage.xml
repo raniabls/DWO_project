@@ -1,0 +1,70 @@
+<Schema name="visionnage_schema">
+  <Cube name="visionnage_cube" visible="true" cache="true" enabled="true">
+    <Table name="fait_visionnage" schema="public" alias="">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="utilisateur_id" name="dim_utilisateur">
+      <Hierarchy name="utilisateur" visible="true" hasAll="true" primaryKey="utilisateur_id" primaryKeyTable="dim_utilisateur">
+        <Table name="dim_utilisateur" schema="public">
+        </Table>
+        <Level name="nom" visible="true" table="dim_utilisateur" column="nom_utilisateur" nameColumn="nom_utilisateur" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="age" visible="true" table="dim_utilisateur" column="age" nameColumn="age" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="sexe" visible="true" table="dim_utilisateur" column="sexe" nameColumn="sexe" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="pays" visible="true" table="dim_utilisateur" column="pays" nameColumn="pays" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="utilisateur_id" visible="true" table="dim_utilisateur" column="utilisateur_id" nameColumn="utilisateur_id" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="plateforme_id" name="dim_plateforme">
+      <Hierarchy name="plateforme" visible="true" hasAll="true" primaryKey="plateforme_id" primaryKeyTable="dim_plateforme">
+        <Table name="dim_plateforme" schema="public">
+        </Table>
+        <Level name="plateforme_id" visible="true" table="dim_plateforme" column="plateforme_id" nameColumn="plateforme_id" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="plateforme" visible="true" table="dim_plateforme" column="plateforme" nameColumn="plateforme" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="contenu_id" name="dim_contenu">
+      <Hierarchy name="contenu" visible="true" hasAll="true" primaryKey="contenu_id" primaryKeyTable="dim_contenu">
+        <Table name="dim_contenu" schema="public" alias="">
+        </Table>
+        <Level name="contenu_id" visible="true" table="dim_contenu" column="contenu_id" nameColumn="contenu_id" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="titre" visible="true" table="dim_contenu" column="titre" nameColumn="titre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="type_contenu" visible="true" table="dim_contenu" column="type_contenu" nameColumn="type_contenu" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="genre" visible="true" table="dim_contenu" column="genre" nameColumn="genre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="date_sortie" visible="true" table="dim_contenu" column="date_sortie" nameColumn="date_sortie" type="Timestamp" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="langue" visible="true" table="dim_contenu" column="langue" nameColumn="langue" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="date_id" name="dim_date">
+      <Hierarchy name="date" visible="true" hasAll="true" primaryKey="date_id" primaryKeyTable="dim_date">
+        <Table name="dim_date" schema="public" alias="">
+        </Table>
+        <Level name="date_id" visible="true" table="dim_date" column="date_id" nameColumn="date_id" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="ann&#233;e" visible="true" table="dim_date" column="annee" nameColumn="annee" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="mois" visible="true" table="dim_date" column="mois" nameColumn="mois" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="jour" visible="true" table="dim_date" column="jour" nameColumn="jour" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="saison" visible="true" table="dim_date" column="saison" nameColumn="saison" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="duree_visionnage" column="duree_visonnage" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="note" column="note" datatype="Numeric" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
